@@ -1,5 +1,6 @@
 package senac.tsi.superhero.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -41,6 +42,7 @@ public class SuperHeroi {
 
     @ManyToMany(mappedBy = "herois")
     @Schema(description = "Grupos aos quais o herói pertence")
+    @JsonIgnore
     private List<Grupo> grupos;
 
     @ManyToMany
@@ -50,6 +52,6 @@ public class SuperHeroi {
             inverseJoinColumns = @JoinColumn(name = "vilao_id")
     )
     @Schema(description = "Vilões enfrentados pelo herói")
-
+    @JsonIgnore
     private List<Vilao> viloes;
 }
