@@ -1,5 +1,6 @@
 package senac.tsi.superhero.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -28,9 +29,11 @@ public class Poder {
 
     @ManyToMany(mappedBy = "poderes")
     @Schema(description = "Heróis que possuem esse poder")
+    @JsonIgnore
     private List<SuperHeroi> herois;
 
     @ManyToMany(mappedBy = "poderes")
     @Schema(description = "Vilões que possuem esse poder")
+    @JsonIgnore
     private List<Vilao> viloes;
 }
